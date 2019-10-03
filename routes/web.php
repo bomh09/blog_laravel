@@ -42,6 +42,7 @@ Route::get('/', function () {
 // Route::get('chao/{user}', function ($user) {
 //     return view('hello-user', ['user' => $user]);
 // });
+
 Route::get('chao/{user}', 'MyController@GetChao');
 
 Route::get('login', 'MyController@GetLogin');
@@ -50,3 +51,15 @@ Route::post('login', 'MyController@PostLogin');
 Route::get('call-view', function () {
     return view('home');
 });
+
+Route::get('home-page', function () {
+    return view('index');
+});
+
+Route::get('schema/create-table', function () {
+    Schema::create('users', function ($table) {
+        $table->increments('id');
+    });
+});
+
+Route::get('schema/create-persons', 'CreateTable@CreateTable');
